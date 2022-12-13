@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, computed, watch } from "vue"
+import { reactive, computed } from "vue"
 
 const props = defineProps({
   config: {
@@ -22,13 +22,17 @@ const props = defineProps({
 const states = reactive({
   currentSort: "",
   currentSortDir: 'asc',
+  pageSize: 10,
+  currentPage: 1,
 });
 
+const sortKeys = Object.keys(props.data[0]);
+
 const sortColumn = (key: string) => {
+  states.currentSort = key;
   if (key === states.currentSort) {
     states.currentSortDir = states.currentSortDir === 'asc' ? 'desc' : 'asc';
   }
-  states.currentSort = key;
 };
 
 const sortedData = computed(() => {
@@ -38,8 +42,20 @@ const sortedData = computed(() => {
     if (a[states.currentSort] < b[states.currentSort]) return -1 * modifier;
     if (a[states.currentSort] > b[states.currentSort]) return 1 * modifier;
     return 0;
+  }).filter((row, index) => {
+    let start = (states.currentPage - 1) * states.pageSize;
+    let end = states.currentPage * states.pageSize;
+    if (index >= start && index < end) return true;
   });
 })
+
+const nextPage = () => {
+  if ((states.currentPage * states.pageSize) < props.data.length) states.currentPage++;
+};
+
+const prevPage = () => {
+  if (states.currentPage > 1) states.currentPage--;
+};
 </script>
 
 <template>
@@ -47,7 +63,7 @@ const sortedData = computed(() => {
     <thead>
       <tr>
         <th v-for="(headItem, headItemIndex) in config" :key="headItemIndex">
-          {{ headItem?.title?.label }} <v-icon @click="sortColumn(headItem?.title?.key)"
+          {{ headItem?.title?.label }} <v-icon @click="sortColumn(sortKeys[headItemIndex])"
             v-if='headItem?.sortable'>mdi-sort</v-icon>
         </th>
       </tr>
@@ -61,4 +77,6 @@ const sortedData = computed(() => {
       </tr>
     </tbody>
   </v-table>
+  <v-pagination v-model="states.currentPage" :length="props.data.length / states.pageSize" :on-prev="prevPage"
+    :on-next="nextPage" />
 </template>

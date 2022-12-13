@@ -57,23 +57,28 @@ const handleActionClick = (id: any) => {
         },
         {
           title: COLUMNS.FNAME,
-          render: (data) => data.fname
+          render: (data) => data.fname,
+          sortable: true
         },
         {
           title: COLUMNS.LNAME,
-          render: (data) => data.lname
+          render: (data) => data.lname,
+          sortable: true
         },
         {
           title: COLUMNS.EMAIL,
           render: (data) => data.email,
+          sortable: true
         },
         {
           title: COLUMNS.GENDER,
-          render: (data) => data.gender
+          render: (data) => data.gender,
+          sortable: true
         },
         {
           title: COLUMNS.IPA,
-          render: (data) => data.ipa
+          render: (data) => data.ipa,
+          sortable: true
         },
         {
           title: COLUMNS.ACTIONS
