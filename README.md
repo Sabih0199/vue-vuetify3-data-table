@@ -1,44 +1,52 @@
-# default
+## Demo - (https://joyful-valkyrie-eb30c6.netlify.app/)
 
-## Project setup
+#### Quick Start:
 
+* Install from npm (https://www.npmjs.com/package/vv3-data-table).
+* Clone or [download](https://github.com/Sabih0199/vue-vuetify3-data-table/archive/refs/heads/main.zip) this repo. (if you download, unzip the file to a directory.)
+* On the command line in the top directory of this repo, run `npm run dev`
+* Visit the application with your browser at http://127.0.0.1:3000/
+
+### Features:
+* Render Jsx Element.
+* Sorts and Pagination.
+
+### Todo:
+* Filter by Search
+
+### Basic Example:
 ```
-# yarn
-yarn
+const COLUMNS = {
+  ID: {
+    label: "Id",
+    key: "id"
+  }
+};
 
-# npm
-npm install
+const DummyData = [
+    {
+        id: 1,
+        fname: "Allan",
+        lname: "Malthus",
+        email: "amalthus0@odnoklassniki.ru",
+        gender: "Male",
+        ipa: "65.132.216.60"
+    }
+]
 
-# pnpm
-pnpm install
+<data-table :data="DummyData" :config="[
+        {
+          title: COLUMNS.ID,
+          render: (data) => data.id,
+          sortable: true //enable sort for this column
+        }
+    ]
+/>
 ```
 
-### Compiles and hot-reloads for development
+## Screenshots:
+![Jenkins pipeline](https://live.staticflickr.com/65535/52562237268_7e5587457f_o.png)
 
-```
-# yarn
-yarn dev
+![Zap attach proxy](https://live.staticflickr.com/65535/52561242872_c4f845d13e_o.png)
 
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-```
-
-### Compiles and minifies for production
-
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
+![SonarQube analysis](https://live.staticflickr.com/65535/52561242877_f7f68c853c_o.png)
