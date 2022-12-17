@@ -1,0 +1,23 @@
+{
+    "name": "vv3-data-table",
+    "version": "1.2.0",
+    "description": "Vue Vuetify 3 Data Table Component",
+    "main": "index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "Vuetify 3 DataTable Component",
+        "Vue 3 DataTable Component"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Sabih0199/vue-vuetify3-data-table/tree/main/src/components"
+    },
+    "author": "Sabih",
+    "license": "ISC",
+    "dependencies": {
+        "vue": "^3.2.38",
+        "vuetify": "^3.0.0"
+    }
+}

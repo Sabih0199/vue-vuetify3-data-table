@@ -12,6 +12,7 @@
     "roboto-fontface": "*",
     "vue": "^3.2.38",
     "vuetify": "^3.0.0",
+    "vv3-data-table": "^1.2.0",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
@@ -19,6 +20,8 @@
     "@types/node": "^18.11.9",
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-vue": "^3.0.3",
+    "sass": "^1.57.0",
+    "sass-loader": "^13.2.0",
     "typescript": "^4.0.0",
     "vite": "^3.0.9",
     "vite-plugin-vuetify": "^1.0.0-alpha.12",
